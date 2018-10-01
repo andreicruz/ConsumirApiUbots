@@ -3,25 +3,22 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
         const Url='http://localhost:8080/Ubots/Projeto/filmes/delete/';
-        const data={
-            nome_filme:"teste ajax"
-        }
         var id = 26;
 
         $(document).ready(function(){
             $("button").click(function(){
                 $.ajax({
-                    url: 'http://localhost:8080/Ubots/Projeto/filmes/delete/' + id + '.json',
-                    method: 'DELETE',
-                    success: function () {
-                        alert('record has been deleted');
+                    'url' : 'http://localhost:8080/Ubots/Projeto/filmes/edit/25.json',
+                    'type' : 'PUT',
+                    'data' : {
+                    'nome_filme' : 'teste com ajax',
                     },
-                    error: function (error) {
-                        alert(error);
+                    'success' : function(result) {
+                        console.log(result);
                     }
-                })
-            })
-        })
+                });
+            });
+        });
         </script>
     </head>
     <body>
