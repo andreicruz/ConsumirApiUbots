@@ -2,28 +2,30 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
-        const Url='http://localhost:8080/Ubots/Projeto/filmes/add.json';
+        const Url='http://localhost:8080/Ubots/Projeto/filmes/delete/';
         const data={
             nome_filme:"teste ajax"
         }
-        
+        var id = 26;
+
         $(document).ready(function(){
             $("button").click(function(){
-                $.post(Url, data, function(data, status){
-                    console.log(`${data} and status is ${status}` )
-                });
+                $.ajax({
+                    url: 'http://localhost:8080/Ubots/Projeto/filmes/delete/' + id + '.json',
+                    method: 'DELETE',
+                    success: function () {
+                        alert('record has been deleted');
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                })
             })
         })
         </script>
-
     </head>
     <body>
-    
-    <div id="div1"><h2>Teste adicionar</h2></div>
-    
-    <button>Adicionar</button>
-    
+        <div id="div1"><h2>Teste deletar</h2></div> 
+        <button>Deletar</button>
     </body>
-    </html>
-    
 </html>
