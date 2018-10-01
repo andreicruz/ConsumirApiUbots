@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+        const Url='http://localhost:8080/Ubots/Projeto/filmes/add.json';
+        const data={
+            nome_filme:"teste ajax"
+        }
+        
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.post(Url, data, function(data, status){
+                    console.log(`${data} and status is ${status}` )
+                });
+            })
+        })
+        </script>
+
+    </head>
+    <body>
+    
+    <div id="div1"><h2>Teste adicionar</h2></div>
+    
+    <button>Adicionar</button>
+    
+    </body>
+    </html>
+    
+</html>
