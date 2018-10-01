@@ -8,11 +8,8 @@
         $(document).ready(function(){
             $("button").click(function(){
                 $.ajax({
-                    'url' : 'http://localhost:8080/Ubots/Projeto/filmes/edit/25.json',
-                    'type' : 'PUT',
-                    'data' : {
-                    'nome_filme' : 'teste com ajax',
-                    },
+                    'url' : 'http://localhost:8080/Ubots/Projeto/filmes.json',
+                    'type' : 'GET',
                     'success' : function(result) {
                         console.log(result);
                     }
@@ -22,7 +19,7 @@
         </script>
     </head>
     <body>
-        <div id="div1"><h2>Teste deletar</h2></div> 
-        <button>Deletar</button>
+        <div id="div1"><h2>Teste get</h2></div> 
+        <button>Listar</button>
     </body>
 </html>
