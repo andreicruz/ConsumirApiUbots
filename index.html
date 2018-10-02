@@ -2,8 +2,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
-            const url='http://localhost:8080/Ubots/Projeto/filmes.json';
-
+            // get
             $(document).ready(function(){
                 $.ajax({
                     url : 'http://localhost:8080/Ubots/Projeto/filmes.json',
@@ -19,6 +18,28 @@
                     }                    
                 });
             });
+            
+            // post
+            $(document).ready(function(){
+                $("#mainbutton").click(function(){
+                    var nomeFilme=$('#nomeFilme').val();
+                    var notaFilme=$('#notaFilme').val();
+                    var filmeVisualizado=$('#filmeVisualizado').val();
+
+                    $.ajax({
+                        url: 'http://localhost:8080/Ubots/Projeto/filmes/add.json',
+                        type: 'POST',
+                        data: { 
+                            nome_filme : nomeFilme,
+                            nota_filme : notaFilme,
+                            visualizado : filmeVisualizado
+                        },
+                        success: function(result){
+                            console.log(result);
+                        }
+                    });
+                });
+            });
         </script>
     </head>
     <body>
@@ -27,5 +48,13 @@
                 <th>Nome</th>
             </tr>
         </table>
+
+        <div id="div1">
+            <h2>Enviar</h2>
+            Nome Filme: <input type="text" id="nomeFilme"><br>
+            Nota do Filme: <input type="text" id="notaFilme"><br>
+            Filme Visualizado: <input type="text" id="filmeVisualizado"><br>
+        </div> 
+        <input id="mainbutton" class="mainbutton" type="button" value="Adicionar"/>
     </body>
 </html>
