@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/form.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>      
             function toUpperCase(){
@@ -19,8 +20,8 @@
             }
 
             if(document.getElementById("notaFilme").value != ''){
-                if(document.getElementById("notaFilme").value < 0 || document.getElementById("notaFilme").value > 10 ){
-                    alert( "Preencha campo NOTA corretamente! (0 - 10)" );
+                if(document.getElementById("notaFilme").value < 0 || document.getElementById("notaFilme").value > 100 ){
+                    alert( "Preencha campo NOTA corretamente! (0 - 100)" );
                     adicionar.notaFilme.focus();
                     return false;
                 }
@@ -62,8 +63,6 @@
                         success: function(result){
                             console.log(result);
                             location.href = "http://localhost:8080/ConsumirApiUbots/index.html";
-                        }, error : function(){
-                            location.href = "http://localhost:8080/ConsumirApiUbots/adicionarFilme.html";
                         }
                     });
                 });
@@ -80,7 +79,7 @@
 
             <div>
                 <label for = "nota"> Nota Filme: </label>
-                <input type = "text" id="notaFilme" name="notaFilme">
+                <input type = "number" min="1" max="100" id="notaFilme" name="notaFilme">
             </div>
 
             <div>
