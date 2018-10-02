@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/form.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
         <script>                
         //procura o filme pelo ID
@@ -50,13 +51,30 @@
         </script>
     </head>
     <body>
-        <div id="div2">
-                <h2>Edição</h2>
-                ID: <input type="text" id="idFilme" name="idFilme" readonly="true"><br>
-                Novo Nome: <input type="text" id="editaNome" name="editaNome"><br>
-                Nova  Nota: <input type="text" id="editaNota" name="editaNota"><br>
-                Filme Visualizado: <input type="text" id="editaVisualizacao" name="editaVisualizacao"><br>
-            </div> 
-        <input id="editbutton" class="editbutton" type="button" value="Atualizar"/>
+        <form  name="adicionar">
+                <div>
+                    <label for = "nome"> ID: </label>
+                    <input type="text" id="idFilme" name="idFilme" readonly="true">
+                </div>
+
+                <div>
+                    <label for = "nome"> Novo Nome </label>
+                    <input type="text" id="editaNome" name="editaNome">
+                </div>
+    
+                <div>
+                    <label for = "nota"> Nova Nota: </label>
+                    <input type="text" id="editaNota" name="editaNota">
+                </div>
+    
+                <div>
+                    <label for = "visualizacao"> Filme Visualizado: </label>
+                    <input type="text" id="editaVisualizacao" name="editaVisualizacao">
+                </div>
+    
+                <div class="button">
+                    <button id="editbutton" class="editbutton" type="button">Atualizar</button>
+                </div>
+            </form>
     </body>
 </html>
