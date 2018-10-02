@@ -2,24 +2,30 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
-        const Url='http://localhost:8080/Ubots/Projeto/filmes/delete/';
-        var id = 26;
+            const url='http://localhost:8080/Ubots/Projeto/filmes.json';
 
-        $(document).ready(function(){
-            $("button").click(function(){
+            $(document).ready(function(){
                 $.ajax({
-                    'url' : 'http://localhost:8080/Ubots/Projeto/filmes.json',
-                    'type' : 'GET',
-                    'success' : function(result) {
-                        console.log(result);
-                    }
+                    url : 'http://localhost:8080/Ubots/Projeto/filmes.json',
+                    type : 'GET',
+                    success : function(result) {
+                        $.each(result, function() {
+                            $.each(this, function(i, filme) {
+                                $('<tr>').append(
+                                    $('<td>').text(filme.nome_filme),
+                                ).appendTo('#records_table');
+                            });
+                        });
+                    }                    
                 });
             });
-        });
         </script>
     </head>
     <body>
-        <div id="div1"><h2>Teste get</h2></div> 
-        <button>Listar</button>
+        <table id="records_table" border='1'>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </table>
     </body>
 </html>
