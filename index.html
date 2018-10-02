@@ -22,36 +22,16 @@
                                     $('<td>').text(filme.created),
                                     $('<td>').text(filme.modified),
                                     $('<td>').text(filme.nota_filme),
-                                    $('<td>').text(filme.visualizado),
-                                    $('<td>').append("<a class='btn btn-default' href='editarFilme.html'><em class='fa fa-pencil'></em></a>")
-                                    .append("<a class='btn btn-default' href='main.html'><em class='fa fa-trash'></em></a>"),
+                                    $('<td>').text(filme.visualizado),                            
+                                    $('<td>').append("<a id='testeEdicao' class='btn btn-default' href='editarFilme.html?id=" + filme.id + "'" +"><em class='fa fa-pencil'></em></a>")
+                                             .append("<a class='btn btn-default' href='main.html'><em class='fa fa-trash'></em></a>"),
                                 ).appendTo('#records_table');
                             });
                         });
+                        // $("#testeEdicao").click(function(e){
+                        //     console.log('ok');
+                        // });
                     }                    
-                });
-            });
-            
-            //put, edit
-            $(document).ready(function(){
-                $("#editbutton").click(function(){
-                    var idFilme=$('#idFilme').val();
-                    var editaNome=$('#editaNome').val();
-                    var editaNota=$('#editaNota').val();
-                    var editaVisualizacao=$('#editaVisualizacao').val();
-
-                    $.ajax({
-                        url : 'http://localhost:8080/Ubots/Projeto/filmes/edit/' + idFilme + '.json',
-                        type : 'PUT',
-                        data: { 
-                            nome_filme : editaNome,
-                            nota_filme : editaNota,
-                            visualizado : editaVisualizacao
-                        },
-                        'success' : function(result) {
-                        console.log(result);
-                        }
-                    });
                 });
             });
         </script>
