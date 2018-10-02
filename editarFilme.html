@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+        <script>                
+        //procura o filme pelo ID
+        $(document).ready(function(){
+            var localiza = location.search.split("?");
+            var quebra = localiza[1].split("=");
+            var id = + quebra[1];
+
+            $.ajax({
+                url : 'http://localhost:8080/Ubots/Projeto/filmes/view/' + id + '.json',                
+                type : 'GET',
+                success : function(result) {
+                    console.log(result);
+                    $.each(result, function(i, filme) {
+                        $('#idFilme').val(filme.id);
+                        $('#editaNome').val(filme.nome_filme);
+                        $('#editaNota').val(filme.nota_filme);
+                        $('#editaVisualizacao').val(filme.visualizado);
+                    });
+                }                    
+            });
+        });
+
+        $(document).ready(function(){
+            $("#editbutton").click(function(){
+                var idFilme=$('#idFilme').val();
+                var editaNome=$('#editaNome').val();
+                var editaNota=$('#editaNota').val();
+                var editaVisualizacao=$('#editaVisualizacao').val();
+
+                $.ajax({
+                    url : 'http://localhost:8080/Ubots/Projeto/filmes/edit/' + idFilme + '.json',
+                    type : 'PUT',
+                    data: { 
+                        nome_filme : editaNome,
+                        nota_filme : editaNota,
+                        visualizado : editaVisualizacao
+                    },
+                    'success' : function(result) {
+                        console.log(result);
+                        location.href = "http://localhost:8080/ConsumirApiUbots/index.html";
+                    }
+                });
+            });
+        }); 
+        </script>
+    </head>
+    <body>
+        <div id="div2">
+                <h2>Edição</h2>
+                ID: <input type="text" id="idFilme" name="idFilme" readonly="true"><br>
+                Novo Nome: <input type="text" id="editaNome" name="editaNome"><br>
+                Nova  Nota: <input type="text" id="editaNota" name="editaNota"><br>
+                Filme Visualizado: <input type="text" id="editaVisualizacao" name="editaVisualizacao"><br>
+            </div> 
+        <input id="editbutton" class="editbutton" type="button" value="Atualizar"/>
+    </body>
+</html>
