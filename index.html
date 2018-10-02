@@ -1,6 +1,12 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
         <script>
             // get
             $(document).ready(function(){
@@ -11,7 +17,14 @@
                         $.each(result, function() {
                             $.each(this, function(i, filme) {
                                 $('<tr>').append(
+                                    $('<td>').text(filme.id),
                                     $('<td>').text(filme.nome_filme),
+                                    $('<td>').text(filme.created),
+                                    $('<td>').text(filme.modified),
+                                    $('<td>').text(filme.nota_filme),
+                                    $('<td>').text(filme.visualizado),
+                                    $('<td>').append("<a class='btn btn-default' href='main.html'><em class='fa fa-pencil'></em></a>")
+                                    .append("<a class='btn btn-default' href='main.html'><em class='fa fa-trash'></em></a>"),
                                 ).appendTo('#records_table');
                             });
                         });
@@ -40,7 +53,8 @@
                     });
                 });
             });
-
+            
+            //put, edit
             $(document).ready(function(){
                 $("#editbutton").click(function(){
                     var idFilme=$('#idFilme').val();
@@ -65,9 +79,18 @@
         </script>
     </head>
     <body>
-        <table id="records_table" border='1'>
+        <table id="records_table">
             <tr>
+                <th>ID</th>
                 <th>Nome</th>
+                <th>Criado</th> 
+                <th>Modificado</th> 
+                <th>Nota</th>
+                <th>Visualizado</th> 
+                <th> 
+                    <a class="button btn-default" href="main.html"><em class="fa fa-plus-circle"></em></a>
+                    <em class="fa fa-cog"></em>
+                </th>
             </tr>
         </table>
 
