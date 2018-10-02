@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+        <script>                
+        //procura o filme pelo ID
+        $(document).ready(function(){
+            var localiza = location.search.split("?");
+            var quebra = localiza[1].split("=");
+            var id = + quebra[1];
+
+            $.ajax({
+                url: 'http://localhost:8080/Ubots/Projeto/filmes/delete/' +id + '.json',
+                method: 'DELETE',
+                success: function () {                    
+                    location.href = "http://localhost:8080/ConsumirApiUbots/index.html";
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        });
+        </script>
+    </head>
+</html>
