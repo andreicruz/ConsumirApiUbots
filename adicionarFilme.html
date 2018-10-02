@@ -1,29 +1,33 @@
+<!DOCTYPE html>
 <html>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>            
-        // post
-        $(document).ready(function(){
-            $("#mainbutton").click(function(){
-                var nomeFilme=$('#nomeFilme').val();
-                var notaFilme=$('#notaFilme').val();
-                var filmeVisualizado=$('#filmeVisualizado').val();
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>            
+            // post
+            $(document).ready(function(){
+                $("#mainbutton").click(function(){
+                    var nomeFilme=$('#nomeFilme').val();
+                    var notaFilme=$('#notaFilme').val();
+                    var filmeVisualizado=$('#filmeVisualizado').val();
 
-                $.ajax({
-                    url: 'http://localhost:8080/Ubots/Projeto/filmes/add.json',
-                    type: 'POST',
-                    data: { 
-                        nome_filme : nomeFilme,
-                        nota_filme : notaFilme,
-                        visualizado : filmeVisualizado
-                    },
-                    success: function(result){
-                        console.log(result);
-                        location.href = "http://localhost:8080/ConsumirApiUbots/index.html";
-                    }
+                    $.ajax({
+                        url: 'http://localhost:8080/Ubots/Projeto/filmes/add.json',
+                        type: 'POST',
+                        data: { 
+                            nome_filme : nomeFilme,
+                            nota_filme : notaFilme,
+                            visualizado : filmeVisualizado
+                        },
+                        success: function(result){
+                            console.log(result);
+                            location.href = "http://localhost:8080/ConsumirApiUbots/index.html";
+                        }
+                    });
                 });
             });
-        });
-    </script>
+        </script>
+    </head>
 
     <body>
         <div id="div1">
