@@ -24,7 +24,7 @@
                                     $('<td>').text(filme.nota_filme),
                                     $('<td>').text(filme.visualizado),                            
                                     $('<td>').append("<a id='testeEdicao' class='btn btn-default' href='editarFilme.html?id=" + filme.id + "'" +"><em class='fa fa-pencil'></em></a>")
-                                             .append("<a class='btn btn-default' href='main.html'><em class='fa fa-trash'></em></a>"),
+                                             .append("<a id='deletarFilme' class='btn btn-default' href='deletarFilme.html?id=" + filme.id + "'" +"><em class='fa fa-trash'></em></a>"),
                                 ).appendTo('#records_table');
                             });
                         });
