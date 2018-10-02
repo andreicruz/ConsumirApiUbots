@@ -3,7 +3,47 @@
     <head>
         <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>            
+        <script>      
+            function toUpperCase(){
+                var nome = document.getElementById("nomeFilme");
+                var visualizado = document.getElementById("filmeVisualizado");
+                nome.value= nome.value.toUpperCase();
+                visualizado.value= visualizado.value.toUpperCase();
+            }    
+
+            function validaCampos(){
+            if(document.getElementById("nomeFilme").value == ''){
+                alert( "Preencha campo NOME corretamente!" );
+                adicionar.nomeFilme.focus();
+                return false;
+            }
+
+            if(document.getElementById("notaFilme").value != ''){
+                if(document.getElementById("notaFilme").value < 0 || document.getElementById("notaFilme").value > 10 ){
+                    alert( "Preencha campo NOTA corretamente! (0 - 10)" );
+                    adicionar.notaFilme.focus();
+                    return false;
+                }
+            }else{
+                alert( "Preencha campo NOTA corretamente!" );
+                adicionar.notaFilme.focus();
+                return false;
+            }
+            
+            if(document.getElementById("filmeVisualizado").value != ''){
+                if(document.getElementById("filmeVisualizado").value != 'N' || document.getElementById("filmeVisualizado").value != 'S'){
+                    alert( "Preencha campo Visualizado corretamente! (S - N)" );
+                    adicionar.filmeVisualizado.focus();
+                    return false;
+                }
+            }else{
+                alert( "Preencha campo Visualizado corretamente!" );
+                adicionar.filmeVisualizado.focus();
+                return false;
+            }
+            
+        }
+
             // post
             $(document).ready(function(){
                 $("#mainbutton").click(function(){
@@ -22,6 +62,8 @@
                         success: function(result){
                             console.log(result);
                             location.href = "http://localhost:8080/ConsumirApiUbots/index.html";
+                        }, error : function(){
+                            location.href = "http://localhost:8080/ConsumirApiUbots/adicionarFilme.html";
                         }
                     });
                 });
@@ -30,12 +72,25 @@
     </head>
 
     <body>
-        <div id="div1">
-            <h2>Enviar</h2>
-            Nome Filme: <input type="text" id="nomeFilme"><br>
-            Nota do Filme: <input type="text" id="notaFilme"><br>
-            Filme Visualizado: <input type="text" id="filmeVisualizado"><br>
-            <input id="mainbutton" class="mainbutton" type="button" value="Adicionar"/>
-            </div> 
+        <form  name="adicionar">
+            <div>
+                <label for = "nome"> Nome Filme: </label>
+                <input type = "text" maxlength="200" id="nomeFilme" name="nomeFilme" onchange="toUpperCase()">
+            </div>
+
+            <div>
+                <label for = "nota"> Nota Filme: </label>
+                <input type = "text" id="notaFilme" name="notaFilme">
+            </div>
+
+            <div>
+                <label for = "visualizacao"> Filme Visualizado: </label>
+                <input type = "text" maxlength="1" id="filmeVisualizado" name="filmeVisualizado" onchange="toUpperCase()">
+            </div>
+
+            <div class="button">
+                <button id="mainbutton" class="mainbutton" type="button" onclick="return validaCampos()">Adicionar</button>
+            </div>
+        </form>
     </body>
 </html>
