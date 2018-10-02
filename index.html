@@ -23,34 +23,12 @@
                                     $('<td>').text(filme.modified),
                                     $('<td>').text(filme.nota_filme),
                                     $('<td>').text(filme.visualizado),
-                                    $('<td>').append("<a class='btn btn-default' href='main.html'><em class='fa fa-pencil'></em></a>")
+                                    $('<td>').append("<a class='btn btn-default' href='editarFilme.html'><em class='fa fa-pencil'></em></a>")
                                     .append("<a class='btn btn-default' href='main.html'><em class='fa fa-trash'></em></a>"),
                                 ).appendTo('#records_table');
                             });
                         });
                     }                    
-                });
-            });
-            
-            // post
-            $(document).ready(function(){
-                $("#mainbutton").click(function(){
-                    var nomeFilme=$('#nomeFilme').val();
-                    var notaFilme=$('#notaFilme').val();
-                    var filmeVisualizado=$('#filmeVisualizado').val();
-
-                    $.ajax({
-                        url: 'http://localhost:8080/Ubots/Projeto/filmes/add.json',
-                        type: 'POST',
-                        data: { 
-                            nome_filme : nomeFilme,
-                            nota_filme : notaFilme,
-                            visualizado : filmeVisualizado
-                        },
-                        success: function(result){
-                            console.log(result);
-                        }
-                    });
                 });
             });
             
@@ -88,28 +66,10 @@
                 <th>Nota</th>
                 <th>Visualizado</th> 
                 <th> 
-                    <a class="button btn-default" href="main.html"><em class="fa fa-plus-circle"></em></a>
+                    <a class="button btn-default" href="adicionarFilme.html"><em class="fa fa-plus-circle"></em></a>
                     <em class="fa fa-cog"></em>
                 </th>
             </tr>
         </table>
-
-        <div id="div1">
-            <h2>Enviar</h2>
-            Nome Filme: <input type="text" id="nomeFilme"><br>
-            Nota do Filme: <input type="text" id="notaFilme"><br>
-            Filme Visualizado: <input type="text" id="filmeVisualizado"><br>
-            <input id="mainbutton" class="mainbutton" type="button" value="Adicionar"/>
-        </div> 
-        
-
-        <div id="div2">
-            <h2>Enviar</h2>
-            ID: <input type="text" id="idFilme"><br>
-            Novo Nome: <input type="text" id="editaNome"><br>
-            Nova  Nota: <input type="text" id="editaNota"><br>
-            Filme Visualizado: <input type="text" id="editaVisualizacao"><br>
-        </div> 
-        <input id="editbutton" class="editbutton" type="button" value="Adicionar"/>
     </body>
 </html>
